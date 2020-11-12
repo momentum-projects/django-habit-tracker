@@ -32,3 +32,25 @@ For this project, you will build a Django application that you can use to help t
 You can make your forms a lot more usable by adding JavaScript -- to begin with, you can have a button for making a record that then shows a form without reloading the page.
 
 If you want to add charts to your habits, you'll definitely need JavaScript. Check out [Chart.js](https://www.chartjs.org/).
+
+
+## Rubric
+
+### Completion
+
+1. (Unsatisfactory) Does not allow for habit and record creation, does not automatically assign habits to users (via request.user) and records to habits (via URL), or does not show record history in date order.
+2. (Satisfactory) Allows for creation of habits and records with automatic assignment to parent models. Shows history of records in date order (forwards or backwards). Does not allow for multiple records for the same habit per day. Allows for update and deletion of records.
+3. (Exemplary) Some stretch features added.
+
+### Design
+
+1. (Unsatisfactory) Is not styled.
+2. (Satisfactory) Has CSS via hand-written stylesheet or framework to make the site usable.
+3. (Exemplary) Care taken with design features to make the site easy to use and/or accessible. Has intelligent defaults throughout the application.
+
+### Django usage
+
+1. (Unsatisfactory) Does not store data via models, does not use forms, or does not use GET and POST for views correctly.
+2. (Satisfactory) Has User, Habit, and Record models (or equivalent), uses forms for all data entry, standard use of views and URLs.
+3. (Exemplary) Writes custom functionality in views, uses Django queries to get aggregated values.
+
