@@ -2,7 +2,21 @@
 
 For this project, you will build a Django application that you can use to help track and reinforce daily habits.
 
-* Your application should have registration and login.
+You should create this project using [the Momentum Django template](https://github.com/momentumlearn/django-project-template). You can get started by running the following commands:
+
+```
+django-admin startproject --template=https://github.com/momentumlearn/django-project-template/archive/main.zip --name=Pipfile project .
+pipenv install
+pipenv shell
+cp project/.env.sample project/.env
+./manage.py makemigrations
+./manage.py migrate
+```
+
+This project requires the use of [PostgreSQL](https://www.postgresql.org/) as its database, and must be deployed to [Heroku](https://www.heroku.com/). You should set both of those up first thing.
+## Project specifications
+
+* Your project should have registration and login.
 * Users should be able to create a new habit tracker. Each habit should have a name and a target or goal. What is this "target"? Each habit should have a daily number of some action you want to do. Some examples:
   * I want to walk 1000 steps daily
   * I want to write 100 lines of code daily
