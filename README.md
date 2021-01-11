@@ -24,10 +24,11 @@ This project requires the use of [PostgreSQL](https://www.postgresql.org/) as it
   * I want to read 200 pages daily
   * I want to sleep 8 hours daily
 * Once you have habits, you should be able to make a daily record of your activity on each habit. That record should contain a date and a number for that date.
-* A user can only have one record per day per habit. You will need to use [the `unique_together` option](https://docs.djangoproject.com/en/2.2/ref/models/options/#unique-together) to enforce this.
+* A user can only have one record per day per habit. You will need to use the [`constraints` option for models](https://docs.djangoproject.com/en/3.1/ref/models/constraints/) with `UniqueConstraint` to make the habit records unique by user, habit, and day.
 * Optimally, users can edit/update records and add records for previous days.
-* Make your interface for this feature as easy to use as possible. For example, if you can choose the date for your record, have it default to the current date.
+* The URL for creating and updating a record should be the same and should use the habit primary key, year, month, and day in the URL. (You can put the form for creating and updating on this page or elsewhere, as your user interface dictates. This specification is in regards to the URL that makes the change in the database via POST.)
 * On the detail page for a habit, you should be able to see all the records for that habit in an HTML table. Show the user whether they met their goal for that day visually somehow -- maybe via colors. Think about accessibility here -- how would a user that can't see know whether they met their goal each day?
+* Make your interface as easy to use as possible. Think about what makes the most sense to enter and review data quickly. Consider using a calendar to show records.
 
 ### Some stretch goals for this project
 
@@ -39,7 +40,7 @@ This project requires the use of [PostgreSQL](https://www.postgresql.org/) as it
   * I want to eat less than 15 jellybeans a day
   * I want to say less than 3 curse words a day
 * If a user is missing a record for a habit for the previous day, show them a message on their dashboard that lets them know and asks them to put in the record. Make it easy to jump from that message to the form to enter the data.
-* Use the [`constraints` option for models](https://docs.djangoproject.com/en/3.1/ref/models/constraints/) with `UniqueConstraint` to make the habit records unique by user, habit, and day.
+* Add a public dashboard for each user with data about their habits and recent statistics.
 
 ### How much of this is JavaScript?
 
@@ -47,9 +48,7 @@ You can make your forms a lot more usable by adding JavaScript -- to begin with,
 
 If you want to add charts to your habits, you'll definitely need JavaScript. Check out [Chart.js](https://www.chartjs.org/).
 
-
 ## Rubric
-
 ### Completion
 
 1. (Unsatisfactory) Does not allow for habit and record creation, does not automatically assign habits to users (via request.user) and records to habits (via URL), or does not show record history in date order.
