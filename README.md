@@ -2,37 +2,32 @@
 
 For this project, you will build a Django application that you can use to help track and reinforce daily habits.
 
-You should create this project using [the Momentum Django template](https://github.com/momentumlearn/django-project-template). You can get started by running the following commands:
+## Getting started
 
-```sh
-django-admin startproject --template=https://github.com/momentumlearn/django-project-template/archive/main.zip --name=Pipfile project . # NOTICE THE DOT. You will be sad if you leave this out.
-pipenv install
-pipenv shell
-cp project/.env.sample project/.env
-./manage.py makemigrations
-./manage.py migrate
-```
+You **can** create this project using [the Momentum Django template](https://github.com/momentumlearn/django-project-template), which is preconfigured with the setup we have been using (e.g. a custom user model, pipenv, `django-environ`, and other things -- see the [template README](https://github.com/momentumlearn/django-project-template) for more details). It is also totally fine to start from scratch, running the django-admin `startproject` command and creating your app from there, as you have been doing. 
 
-This project requires the use of [PostgreSQL](https://www.postgresql.org/docs/current/index.html) as its database, and must be deployed to [Heroku](https://www.heroku.com/). You should set both of those up first thing. See the [documentation in our student resources repo](https://github.com/momentumlearn/student-resources/blob/main/articles/deploy-django-to-heroku.md) for a guide.
+## Postgres and Heroku
 
-**NOTE**: Don't download Postgres from the website to install it! Use Homebrew to install it. See instructions above.
+This project requires the use of [PostgreSQL](https://www.postgresql.org/docs/current/index.html) as its database, and must be deployed to [Heroku](https://www.heroku.com/). You should set both of those up before you do anything else with your application. See the [documentation in our student resources repo](https://github.com/momentumlearn/student-resources/blob/main/articles/deploy-django-to-heroku.md) for a guide.
 
-## Project specifications
+**NOTE**: Don't download Postgres from the website to install it! Use Homebrew to install it. See instructions in the [documentation in our student resources repo](https://github.com/momentumlearn/student-resources/blob/main/articles/deploy-django-to-heroku.md).
+
+## Project Requirements
 
 - Your project should have registration and login.
-- Users should be able to create a new habit tracker. Each habit should have a name and a target or goal. What is this "target"? Each habit should have a daily number of some action you want to do. Some examples:
+- Users should be able to create new habits and track those habits with trackers, or daily records (what you call it is up to you). 
+- Each habit should have a name and a target or goal. What is this "target"? Each habit should have a daily number of some action you want to do. Some examples:
   - I want to walk 1000 steps daily
   - I want to write 100 lines of code daily
   - I want to talk to 2 new people each day
   - I want to read 200 pages daily
   - I want to sleep 8 hours daily
 - Once you have habits, you should be able to make a daily record of your activity on each habit. That record should contain a date and a number for that date.
-- A user can only have one record per day per habit. You will need to use the [`constraints` option for models](https://docs.djangoproject.com/en/3.1/ref/models/constraints/) with `UniqueConstraint` to make the habit records unique by user, habit, and day.
+- A user can only have **one record per day per habit**. You will need to use the [`constraints` option for models](https://docs.djangoproject.com/en/3.2/ref/models/constraints/) with `UniqueConstraint` to make the habit records unique by user, habit, and day.
 - Optimally, users can edit/update records and add records for previous days.
-- The URL for creating and updating a record should be the same and should use the habit primary key, year, month, and day in the URL.
-
+- The URL for creating and updating a record should be the same and should use the habit primary key, year, month, and day in the URL. For example: `habit/1/2021/6/18`
   - We want to do this so that we can have a single url that will work for a new record and will also allow changing an existing one.
-  - You'll want to look into the [`get_or_create()` method](https://docs.djangoproject.com/en/3.1/ref/models/querysets/#django.db.models.query.QuerySet.get_or_create) for this.
+  - You'll want to look into the [`get_or_create()` method](https://docs.djangoproject.com/en/3.2/ref/models/querysets/#django.db.models.query.QuerySet.get_or_create) for this.
   - You can put the form for creating and updating on this page or elsewhere, as your user interface dictates.
 
 - On the detail page for a habit, you should be able to see all the records for that habit in an HTML table. Show the user whether they met their goal for that day visually somehow -- maybe via colors. Think about accessibility here -- how would a user that can't see know whether they met their goal each day?
