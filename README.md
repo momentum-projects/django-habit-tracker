@@ -11,9 +11,9 @@ You'll need to set up a new Django project. You will need to follow the same ste
 - `django-extensions` - for extended functionality like `shell_plus`
 - `django-registration-redux` - for easily handling new user registration and authentication
 
-## Postgres and Heroku
+## Postgres and Deployment
 
-This project requires the use of [PostgreSQL](https://www.postgresql.org/docs/current/index.html) as its database, and must be deployed to [Heroku](https://www.heroku.com/). You should set both of those up before you do anything else with your application. See our [documentation on deploying a Django app to Heroku](https://momentumlearn.notion.site/Deploying-a-Django-App-to-Heroku-81488333c03445539bfc7eb3c1691ed0) for a guide.
+This project requires the use of [PostgreSQL](https://www.postgresql.org/docs/current/index.html) as its database, and must be deployed. You should set both of those up before you do anything else with your application. See our [documentation on deploying a Django app to Render](https://momentumlearn.notion.site/Deploying-a-Django-App-to-Render-4a7915b760474438aa56bbaddc3309cb) for a guide.
 
 **NOTE**: Use **Homebrew** to install Postgres. Don't download Postgres from the website to install it!  See our [instructions for how to install and use Postgres locally](https://momentumlearn.notion.site/Using-Postgres-Locally-6d24cd1ea8854eabb875023d6696fba9).
 
