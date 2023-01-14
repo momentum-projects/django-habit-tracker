@@ -4,12 +4,18 @@ For this project, you will build a Django application that you can use to track 
 
 ## Getting started
 
-You'll need to set up a new Django project. You will need to follow the same steps you have been following to install `django` with `pipenv`. Consider installing some or all of the following packages:
+You'll need to set up a new Django project. As usual, install `django` and any other dependencies with `pipenv`.
+
+### Consider installing some or all of the following packages
 
 - `django-environ` - for easily configuring a `.env` file
 - `django-debug-toolbar` - for debugging information in the browser
 - `django-extensions` - for extended functionality like `shell_plus`
 - `django-registration-redux` - for easily handling new user registration and authentication
+
+### Make a custom user model
+
+[Following best practices](https://learndjango.com/tutorials/django-custom-user-model), be sure to create a [custom user model](https://docs.djangoproject.com/en/4.1/topics/auth/customizing/#using-a-custom-user-model-when-starting-a-project) and a corresponding migration file before you run any other migrations.
 
 ## Postgres and Deployment
 
@@ -19,23 +25,23 @@ This project requires the use of [PostgreSQL](https://www.postgresql.org/docs/cu
 
 ## Project Requirements
 
-- Your project should have registration and login.
+- Your project should have registration, login, and logout.
 - Users should be able to create new habits and track those habits with trackers, or daily records (what you call it is up to you).
-- Each habit should have a name and a target or goal. What is this "target"? Each habit should have a daily number of some action you want to do. Some examples:
+- Each habit should have a name and a target or goal. A "target" in this context is the quantity of some action you want to do each day. Some examples:
     - I want to walk 1000 steps daily
     - I want to write 100 lines of code daily
     - I want to talk to 2 new people each day
     - I want to read 200 pages daily
     - I want to sleep 8 hours daily
-- Once you have habits, you should be able to make a daily record of your activity on each habit. That record should contain a date and a number for that date.
-- A user can only have **one record per day per habit**. You will need to use the [`constraints` option for models](https://docs.djangoproject.com/en/4.0/ref/models/constraints/) with `UniqueConstraint` to make the habit records unique by user, habit, and day.
+- Once you have habits, you should be able to make a daily record of your activity on each habit. That record should contain a date and a quantity (i.e., a record of your activity in reference to the target) for that date.
+- A user can only have **one record per day per habit**. You will need to use the [`constraints` option for models](https://docs.djangoproject.com/en/4.1/ref/models/constraints/) with `UniqueConstraint` to make the habit records unique by user, habit, and day.
 - Optimally, users can edit/update records and add records for previous days.
-- The URL for creating and updating a record should be the same and should use the habit primary key, year, month, and day in the URL. For example: `habit/1/2021/6/18`
-    - We want to do this so that we can have a single url that will work for a new record and will also allow changing an existing one.
-    - You'll want to look into the [`get_or_create()` method](https://docs.djangoproject.com/en/4.0/ref/models/querysets/#django.db.models.query.QuerySet.get_or_create) for this.
+- The URL for creating and updating a record should be the same and should use the habit primary key, year, month, and day in the URL. For example: `habit/1/2023/1/4`
+    - This a single url will work for a new record and will also allow changing an existing one.
+    - You'll want to look into the [`get_or_create()` method](https://docs.djangoproject.com/en/4.1/ref/models/querysets/#django.db.models.query.QuerySet.get_or_create) for this.
     - You can put the form for creating and updating on this page or elsewhere, as your user interface dictates.
 
-- On the detail page for a habit, you should be able to see all the records for that habit in an HTML table. Show the user whether they met their goal for that day visually somehow -- maybe via colors. Think about accessibility here -- how would a user that can't see know whether they met their goal each day?
+- On the detail page for a habit, you should be able to see all the records for that habit in an HTML table. Show the user whether they met their goal for that day visually somehow, maybe using different colors. Think about accessibility here; how would a user that can't see know whether they met their goal each day?
 - Make your interface as easy to use as possible. Think about what makes the most sense to enter and review data quickly. Consider using a calendar to show records.
 
 ### Some stretch goals for this project
