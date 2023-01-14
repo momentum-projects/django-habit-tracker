@@ -37,7 +37,7 @@ This project requires the use of [PostgreSQL](https://www.postgresql.org/docs/cu
 - A user can only have **one record per day per habit**. You will need to use the [`constraints` option for models](https://docs.djangoproject.com/en/4.1/ref/models/constraints/) with `UniqueConstraint` to make the habit records unique by user, habit, and day.
 - Optimally, users can edit/update records and add records for previous days.
 - The URL for creating and updating a record should be the same and should use the habit primary key, year, month, and day in the URL. For example: `habit/1/2023/1/4`
-    - This a single url will work for a new record and will also allow changing an existing one.
+    - This single url will work for a new record and will also allow changing an existing one.
     - You'll want to look into the [`get_or_create()` method](https://docs.djangoproject.com/en/4.1/ref/models/querysets/#django.db.models.query.QuerySet.get_or_create) for this.
     - You can put the form for creating and updating on this page or elsewhere, as your user interface dictates.
 
